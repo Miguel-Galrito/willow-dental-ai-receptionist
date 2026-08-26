@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Willow Dental Care</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#123332;
+    --ink-soft:#3c5453;
+    --paper:#FBFBF8;
+    --mint:#E7F1EA;
+    --sage:#7FA695;
+    --sage-line:#c7dbd0;
+    --amber:#C9962B;
+    --amber-dark:#a87a1c;
+    --white:#FFFFFF;
+    --display: 'Fraunces', serif;
+    --body: 'Inter', sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:var(--body);
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.5;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 32px;}
+
+  /* NAV */
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:22px 32px; border-bottom:1px solid var(--sage-line);
+  }
+  .logo{font-family:var(--display); font-size:22px; font-weight:600; letter-spacing:-0.01em;}
+  .logo span{color:var(--sage);}
+  .navlinks{display:flex; gap:32px; font-size:14px; font-weight:500; color:var(--ink-soft); list-style:none;}
+  .navlinks li{cursor:default;}
+  .navcta{
+    background:var(--ink); color:var(--white); padding:10px 18px; border-radius:100px;
+    font-size:13px; font-weight:600; letter-spacing:0.01em;
+  }
+  @media(max-width:720px){ .navlinks{display:none;} }
+
+  /* HERO */
+  .hero{
+    display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px;
+    padding:72px 32px 80px; max-width:1120px; margin:0 auto; align-items:center;
+  }
+  .eyebrow{
+    font-size:13px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--amber-dark); margin-bottom:18px;
+  }
+  h1{
+    font-family:var(--display); font-size:46px; line-height:1.08; font-weight:600;
+    letter-spacing:-0.02em; margin-bottom:20px;
+  }
+  h1 em{font-style:italic; color:var(--sage);}
+  .hero p.lead{font-size:17px; color:var(--ink-soft); max-width:440px; margin-bottom:28px;}
+  .hero-ctas{display:flex; gap:14px;}
+  .btn-primary{
+    background:var(--amber); color:var(--ink); padding:14px 24px; border-radius:100px;
+    font-weight:600; font-size:14.5px; border:none; cursor:pointer;
+  }
+  .btn-ghost{
+    background:transparent; color:var(--ink); padding:14px 22px; border-radius:100px;
+    font-weight:600; font-size:14.5px; border:1.5px solid var(--sage-line); cursor:default;
+  }
+  @media(max-width:860px){
+    .hero{grid-template-columns:1fr; padding-top:48px;}
+    h1{font-size:36px;}
+  }
+
+  /* CHAT WIDGET */
+  .phone{
+    background:var(--white); border-radius:22px; border:1px solid var(--sage-line);
+    box-shadow:0 24px 60px -20px rgba(18,51,50,0.25);
+    display:flex; flex-direction:column; height:520px; overflow:hidden;
+  }
+  .chat-head{
+    display:flex; align-items:center; gap:10px; padding:16px 18px;
+    background:var(--ink); color:var(--white);
+  }
+  .dot{width:8px; height:8px; border-radius:50%; background:#5FE0A8; box-shadow:0 0 0 3px rgba(95,224,168,0.25);}
+  .chat-head-text .name{font-weight:600; font-size:14.5px;}
+  .chat-head-text .status{font-size:11.5px; color:#bcd4cf;}
+  .chat-body{
+    flex:1; overflow-y:auto; padding:18px; display:flex; flex-direction:column; gap:12px;
+    background:var(--mint);
+  }
+  .msg{max-width:82%; padding:10px 14px; border-radius:14px; font-size:14px; line-height:1.45;}
+  .msg.bot{background:var(--white); align-self:flex-start; border-bottom-left-radius:4px; color:var(--ink);}
+  .msg.user{background:var(--ink); color:var(--white); align-self:flex-end; border-bottom-right-radius:4px;}
+  .typing{display:flex; gap:4px; padding:12px 14px; background:var(--white); border-radius:14px; align-self:flex-start; width:fit-content;}
+  .typing span{width:6px; height:6px; border-radius:50%; background:var(--sage); animation:bounce 1.2s infinite ease-in-out;}
+  .typing span:nth-child(2){animation-delay:0.15s;}
+  .typing span:nth-child(3){animation-delay:0.3s;}
+  @keyframes bounce{0%,60%,100%{transform:translateY(0); opacity:0.5;} 30%{transform:translateY(-4px); opacity:1;}}
+  .chat-input{
+    display:flex; gap:8px; padding:14px; border-top:1px solid var(--sage-line); background:var(--white);
+  }
+  .chat-input input{
+    flex:1; border:1px solid var(--sage-line); border-radius:100px; padding:11px 16px;
+    font-family:var(--body); font-size:14px; outline:none;
+  }
+  .chat-input input:focus{border-color:var(--sage);}
+  .chat-input button{
+    background:var(--ink); color:var(--white); border:none; width:42px; height:42px;
+    border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .chat-input button:disabled{opacity:0.45; cursor:default;}
+  .hint{font-size:11px; color:var(--ink-soft); text-align:center; padding:0 14px 12px; background:var(--white);}
+
+  /* TRUST STRIP */
+  .strip{background:var(--ink); color:var(--white); padding:44px 32px;}
+  .strip .wrap{display:grid; grid-template-columns:repeat(3,1fr); gap:32px;}
+  .strip h3{font-family:var(--display); font-size:15px; font-weight:600; margin-bottom:8px; color:#EAD9A8;}
+  .strip p{font-size:13.5px; color:#c8dbd7; line-height:1.5;}
+  @media(max-width:720px){ .strip .wrap{grid-template-columns:1fr;} }
+
+  /* SERVICES */
+  .section{padding:76px 32px;}
+  .section-head{max-width:520px; margin-bottom:44px;}
+  .section-head .eyebrow{color:var(--sage);}
+  .section-head h2{font-family:var(--display); font-size:30px; font-weight:600; letter-spacing:-0.01em;}
+  .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .card{
+    border:1px solid var(--sage-line); border-radius:16px; padding:26px; background:var(--white);
+  }
+  .card .num{font-family:var(--display); font-size:13px; color:var(--sage); font-weight:600; margin-bottom:14px;}
+  .card h4{font-size:16px; font-weight:600; margin-bottom:8px;}
+  .card p{font-size:13.5px; color:var(--ink-soft);}
+  @media(max-width:860px){ .grid3{grid-template-columns:1fr;} }
+
+  footer{
+    padding:36px 32px; border-top:1px solid var(--sage-line);
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;
+    font-size:13px; color:var(--ink-soft);
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Willow <span>Dental Care</span></div>
+  <ul class="navlinks">
+    <li>Services</li><li>New Patients</li><li>Insurance</li><li>Hours &amp; Location</li>
+  </ul>
+  <div class="navcta">Ask a question →</div>
+</nav>
+
+<section class="hero wrap">
+  <div>
+    <div class="eyebrow">Springfield, since 2009</div>
+    <h1>Every call answered.<br>Even the ones at <em>9pm</em>.</h1>
+    <p class="lead">Willow Dental Care's front desk now runs an assistant that answers insurance, hours, and booking questions instantly — day or night. Try it on the right, it's live.</p>
+    <div class="hero-ctas">
+      <button class="btn-primary" onclick="document.getElementById('chatInput').focus()">Try the assistant</button>
+      <div class="btn-ghost">New patient special: $99 exam + cleaning</div>
+    </div>
+  </div>
+
+  <div class="phone">
+    <div class="chat-head">
+      <span class="dot"></span>
+      <div class="chat-head-text">
+        <div class="name">Ask Willow</div>
+        <div class="status">Usually replies in seconds</div>
+      </div>
+    </div>
+    <div class="chat-body" id="chatBody">
+      <div class="msg bot">Hi! I'm the virtual assistant for Willow Dental Care. Ask me about hours, insurance, or I can get a visit booked for you 🌿</div>
+    </div>
+    <div class="chat-input">
+      <input id="chatInput" type="text" placeholder="e.g. Do you take Delta Dental?" onkeydown="if(event.key==='Enter')sendMessage()">
+      <button id="sendBtn" onclick="sendMessage()" aria-label="Send">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7Z"/></svg>
+      </button>
+    </div>
+    <div class="hint">Live demo — this is really talking to Claude.</div>
+  </div>
+</section>
+
+<section class="strip">
+  <div class="wrap">
+    <div>
+      <h3>0 missed calls</h3>
+      <p>The assistant handles after-hours questions instead of sending patients to voicemail.</p>
+    </div>
+    <div>
+      <h3>Most PPOs accepted</h3>
+      <p>Delta Dental, Cigna, MetLife, and most PPO plans — the assistant checks in real time.</p>
+    </div>
+    <div>
+      <h3>Same-week booking</h3>
+      <p>Requests go straight to the front desk, confirmed within one business day.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="section-head">
+    <div class="eyebrow">What patients ask most</div>
+    <h2>Built around the questions that used to sit in voicemail</h2>
+  </div>
+  <div class="grid3">
+    <div class="card"><div class="num">Hours</div><h4>Mon–Thu 8–6, Fri 8–2</h4><p>Saturday by appointment. Closed Sunday. 214 Maple Street, Springfield.</p></div>
+    <div class="card"><div class="num">Insurance</div><h4>Most PPO plans</h4><p>Plus an in-house membership plan for patients without insurance.</p></div>
+    <div class="card"><div class="num">Services</div><h4>Cleanings to Invisalign</h4><p>Cleanings, whitening, Invisalign, bonding, and same-day emergency visits.</p></div>
+  </div>
+</section>
+
+<footer>
+  <div>Willow Dental Care · 214 Maple Street, Springfield</div>
+  <div>Demo built for outreach — not a real practice</div>
+</footer>
+
+<script>
+const CLINIC_SYSTEM_PROMPT = `You are the front-desk virtual assistant for "Willow Dental Care", a small dental practice in Springfield.
+Facts you know (use only these — invent nothing else, and say you'll have the front desk follow up if asked something outside this list):
+- Hours: Mon-Thu 8am-6pm, Fri 8am-2pm, Sat by appointment only, closed Sun.
+- Address: 214 Maple Street, Springfield.
+- Insurance: accepts most PPO plans, specifically Delta Dental, Cigna, and MetLife. Offers an in-house membership plan for uninsured patients.
+- Services: routine cleanings, whitening, Invisalign, cosmetic bonding, and same-day emergency appointments.
+- New patient special: $99 for exam + x-rays + cleaning.
+- Booking: you do not book instantly. Collect name, preferred day/time, and reason for visit, then say the front desk will confirm within one business day.
+Tone: warm, brief, efficient — like a friendly front-desk person, not a corporate chatbot. Keep replies under 3 sentences unless walking through booking details.`;
+
+let history = [];
+const chatBody = document.getElementById('chatBody');
+const input = document.getElementById('chatInput');
+const sendBtn = document.getElementById('sendBtn');
+
+function addMessage(text, role){
+  const div = document.createElement('div');
+  div.className = 'msg ' + (role === 'user' ? 'user' : 'bot');
+  div.textContent = text;
+  chatBody.appendChild(div);
+  chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+function showTyping(){
+  const div = document.createElement('div');
+  div.className = 'typing';
+  div.id = 'typingIndicator';
+  div.innerHTML = '<span></span><span></span><span></span>';
+  chatBody.appendChild(div);
+  chatBody.scrollTop = chatBody.scrollHeight;
+}
+function hideTyping(){
+  const el = document.getElementById('typingIndicator');
+  if(el) el.remove();
+}
+
+async function sendMessage(){
+  const text = input.value.trim();
+  if(!text) return;
+  input.value = '';
+  input.disabled = true;
+  sendBtn.disabled = true;
+
+  addMessage(text, 'user');
+  history.push({role:'user', content:text});
+  showTyping();
+
+  try{
+    const response = await fetch('/api/chat', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        model:'claude-sonnet-4-6',
+        max_tokens:1000,
+        system: CLINIC_SYSTEM_PROMPT,
+        messages: history
+      })
+    });
+    const data = await response.json();
+    const textBlock = (data.content || []).find(b => b.type === 'text');
+    const reply = textBlock ? textBlock.text : "Sorry, could you say that again?";
+    hideTyping();
+    addMessage(reply, 'bot');
+    history.push({role:'assistant', content:reply});
+  }catch(err){
+    hideTyping();
+    addMessage("Sorry — I'm having trouble connecting right now. Please call the office directly.", 'bot');
+  }finally{
+    input.disabled = false;
+    sendBtn.disabled = false;
+    input.focus();
+  }
+}
+</script>
+
+</body>
+</html>
