@@ -4,7 +4,7 @@ A live, working demo of an AI front-desk assistant for dental practices. Built t
 what an always-on receptionist looks like — answering hours/insurance questions and starting the
 booking flow, 24/7.
 
-**Live demo:** willow-dental-ai-receptionist.vercel.app
+**Live demo:** [willow-dental-ai-receptionist.vercel.app](https://willow-dental-ai-receptionist.vercel.app)
 
 ## What it does
 - Answers patient FAQs (hours, insurance, services) grounded in the clinic's real info
